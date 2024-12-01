@@ -28,7 +28,7 @@ public class Parser {
         String[] insTokens = line.split("[=;]"); //split the string by the delimiters = ;
 
         for(String token : insTokens){
-            token.replaceAll("\\s","");     //get rid fo whitespace
+            token = token.trim();   //get rid fo whitespace
         }
 
         instType = "C";

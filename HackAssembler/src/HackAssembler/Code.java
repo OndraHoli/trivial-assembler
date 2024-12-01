@@ -1,5 +1,7 @@
 package HackAssembler;
 import java.io.PrintStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.io.File;
@@ -74,10 +76,28 @@ public class Code {
         String intermediate = binJump.get(token);
         return intermediate;
    }
-    public String addr(String token){
-       String num = Integer.toBinaryString(Integer.parseInt(token, 10));
-       num = "0".repeat(15 - num.length()) + num;
-       return num;
+    public String addr(String token, HashMap<String,String> map){
+
+        if(!isNumeric(token)){
+           String intermediate = map.get(token);
+           int numValue = Integer.parseInt(intermediate);
+           intermediate = Integer.toBinaryString(numValue);
+           intermediate = "0".repeat(15-intermediate.length()) + intermediate;
+           return intermediate;
+       }
+       else { //TODO: promenne nefunguji - jak je rozlisovat?
+           String num = Integer.toBinaryString(Integer.parseInt(token, 10));
+           num = "0".repeat(15 - num.length()) + num;
+           return num;
+       }
    }
+    boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
+    }
 
 }
