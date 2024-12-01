@@ -1,0 +1,6 @@
+D;JGT
+D+M;JGT
+D-1;JLE
+M=D+M;JLE
+AMD=D+1;JGT
+@16
